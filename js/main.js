@@ -1,6 +1,4 @@
-
-const INTERES_ANUAL = 5; 
-
+const INTERES_ANUAL = 30;  
 
 function calcularCredito() {
     let monto = obtenerMonto(); 
@@ -11,9 +9,11 @@ function calcularCredito() {
         return; 
     }
 
-    const interesMensual = (INTERES_ANUAL / 100) / 12; 
-    const cuota = calcularCuota(monto, interesMensual, plazoMeses);
-    mostrarResultado(cuota, plazoMeses, monto);
+    const interesTotal = monto * (INTERES_ANUAL / 100); 
+    const totalAPagar = monto + interesTotal; 
+    const cuota = totalAPagar / plazoMeses;
+
+    mostrarResultado(cuota, plazoMeses, monto, interesTotal);
 }
 
 //----------------------- VALIACION MONTOS --------------------------
@@ -40,20 +40,19 @@ function obtenerPlazo() {
     } else if (plazoInput === "12") {
         return 12; 
     } else {
-        document.getElementById('resultado').innerText = "Por favor, selecciona un plazo válido (3, 6 o 12 meses).";
+        // document.getElementById('resultado').innerText = "Por favor, selecciona un plazo válido (3, 6 o 12 meses).";
         return null; 
     }
 }
 
-//----------------------- CALCULO DE CUOTAS --------------------------
-function calcularCuota(monto, interesMensual, plazoMeses) {
-    return monto * (interesMensual / (1 - Math.pow(1 + interesMensual, -plazoMeses)));
-}
-
 //----------------------- MOSTRAR RESULTADOS --------------------------
-function mostrarResultado(cuota, plazoMeses, monto) {
+function mostrarResultado(cuota, plazoMeses, monto, interesTotal) {
     const totalAPagar = cuota * plazoMeses; 
-    const totalInteres = totalAPagar - monto; 
+    const totalInteres = interesTotal; 
+
+    console.log("Cuota: ", cuota);
+    console.log("Total a Pagar: ", totalAPagar);
+    console.log("Total de Intereses: ", totalInteres);
 
     document.getElementById('resultado').innerText = 
         `Cuota Mensual: $${cuota.toFixed(2)}\n` +
