@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Simulador de Créditos Básico</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Simulador de Créditos</h1>
+        <h3> Interes anual es del %5 </h3>
+        <form id="formularioCredito" class="mt-4">
+            <div class="form-group">
+                <label for="monto">Monto del Crédito:</label>
+                <input type="number" id="monto" class="form-control" placeholder="$ 10000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="plazo">Plazo en meses:</label>
+                <select id="plazo" class="form-control" required>
+                    <option value="3">3 meses</option>
+                    <option value="6">6 meses</option>
+                    <option value="12">12 meses</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" onclick="calcularCredito()">Calcular</button>
+        </form>
+
+        <h2 id="resultado" class="mt-4 text-center"></h2>
+    </div>
+
+    <script src="./js/main.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
